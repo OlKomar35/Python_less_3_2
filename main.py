@@ -7,3 +7,23 @@
 # собирает ягоды с этого куста и с двух соседних с ним.
 # Напишите программу для нахождения максимального числа ягод, которое может собрать за один заход собирающий модуль,
 # находясь перед некоторым кустом заданной во входном файле грядки.
+
+import random
+
+print(bushes := [random.randint(0, 5) for _ in range(int(input('N= ')))])
+
+max_berries = float('-inf')
+
+flag = True
+index = 0
+while flag:
+    sum_berries = bushes[index % (len(bushes))] + bushes[(index + 1) % len(bushes)] + bushes[(index + 2) % len(bushes)]
+    if max_berries < sum_berries:
+        max_berries = sum_berries;
+    index += 1
+
+    quotient = index // len(bushes)
+    if quotient == 1:
+        flag = False
+
+print(max_berries)
